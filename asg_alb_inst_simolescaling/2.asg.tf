@@ -47,7 +47,7 @@ resource "aws_cloudwatch_metric_alarm" "scale_up" {
   namespace           = "AWS/EC2"
   period              = "120"
   statistic           = "Average"
-  threshold           = "30" # New instance will be created once CPU utilization is higher than 30 %
+  threshold           = "40" # New instance will be created once CPU utilization is higher than 30 %
   dimensions = {
     "AutoScalingGroupName" = aws_autoscaling_group.example-autoscaling.name
   }
@@ -71,7 +71,7 @@ resource "aws_cloudwatch_metric_alarm" "scale_down" {
   comparison_operator = "LessThanOrEqualToThreshold"
   namespace           = "AWS/EC2"
   metric_name         = "CPUUtilization"
-  threshold           = "10"
+  threshold           = "40"
   evaluation_periods  = "2"
   period              = "120"
   statistic           = "Average"
